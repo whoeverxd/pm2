@@ -1,16 +1,16 @@
 ---
 const projects = [
   {
-    label: 'Featured Build 01',
-    title: 'A sharper digital presence for a boutique legal firm.',
-    description: 'We replaced a dated brochure site with a clear editorial system focused on authority, trust and qualified leads.',
-    metrics: ['+42% consultation requests', 'Launch in 3 weeks'],
+    label: 'Caso 01',
+    title: 'Un consultorio dental que necesitaba verse confiable y fácil de contactar.',
+    description: 'Diseñamos una página clara con servicios, ubicación, preguntas frecuentes y botones directos a WhatsApp para convertir visitas en citas.',
+    metrics: ['WhatsApp integrado', 'Mensaje claro desde la primera pantalla'],
   },
   {
-    label: 'Featured Build 02',
-    title: 'A luxury service brand positioned like a market leader.',
-    description: 'The new experience paired refined typography with cleaner offers, helping the team close better-fit clients faster.',
-    metrics: ['+31% lead quality', '12-country reach'],
+    label: 'Caso 02',
+    title: 'Una firma de ingeniería que necesitaba ordenar su presencia digital.',
+    description: 'Convertimos información dispersa en un sitio profesional con secciones de servicios, proyectos y contacto para generar más confianza al cotizar.',
+    metrics: ['Dominio propio', 'Estructura lista para crecer'],
   },
 ];
 ---
@@ -19,13 +19,12 @@ const projects = [
   <div class="container-x">
     <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
       <div class="lg:col-span-4">
-        <div class="eyebrow mb-5">Featured Projects</div>
+        <div class="eyebrow mb-5">Proyectos</div>
         <h2 class="section-title">
-          Selected work designed to elevate perception and increase demand.
+          Sitios pensados para negocios que necesitan verse serios online.
         </h2>
         <p class="mt-6 section-kicker max-w-md">
-          Every project is structured like a premium product launch: positioning first, design second,
-          execution always.
+          No todos necesitan una web enorme. Muchos solo necesitan una presencia clara, profesional y lista para empezar a generar confianza.
         </p>
       </div>
 
@@ -37,7 +36,7 @@ const projects = [
                 <div class={`rounded-[24px] border border-white/10 p-6 sm:p-8 ${index === 0 ? 'bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_42%),linear-gradient(180deg,#111A30_0%,#0C1324_100%)]' : 'bg-[linear-gradient(180deg,#10192E_0%,#0B1221_100%)]'}`}>
                   <div class="flex items-center justify-between gap-4">
                     <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">{project.label}</div>
-                    <div class="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/70">Desktop Experience</div>
+                    <div class="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/70">Sitio a medida</div>
                   </div>
                   <div class="mt-10 grid gap-4 sm:grid-cols-[1.05fr_0.95fr]">
                     <div class="space-y-4">
@@ -58,7 +57,7 @@ const projects = [
                 </div>
 
                 <div class="px-2 sm:px-3 lg:px-4">
-                  <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">Case Study Summary</div>
+                  <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">Resumen</div>
                   <h3 class="mt-4 text-2xl font-semibold tracking-[-0.04em] text-white sm:text-[2rem]">{project.title}</h3>
                   <p class="mt-4 text-base leading-8 text-brand-muted">{project.description}</p>
                   <div class="mt-6 flex flex-wrap gap-3">

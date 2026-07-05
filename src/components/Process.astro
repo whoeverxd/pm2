@@ -27,14 +27,13 @@ const steps = [
   <div class="container-x">
     <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
       <div class="lg:col-span-4">
-        <div class="eyebrow mb-5">Process</div>
+        <div class="eyebrow mb-5">Proceso</div>
         <h2 class="section-title">
-          A four-step workflow with very little wasted motion.
+          Un proceso simple para pasar de idea a sitio publicado.
         </h2>
         <p class="mt-6 section-kicker max-w-md">
-          Fast when it should be fast, rigorous where it matters.
+          Te guiamos sin hacerte perder tiempo con pasos innecesarios.
         </p>
-      </h2>
       </div>
 
       <div class="lg:col-span-8">
@@ -45,7 +44,7 @@ const steps = [
               steps.map((s) => (
                 <article class="panel panel-hover relative p-7 sm:p-8 lg:ml-8">
                   <div class="absolute -left-[45px] top-10 hidden h-6 w-6 rounded-full border border-brand-blue/50 bg-brand-bg shadow-[0_0_0_6px_rgba(6,11,24,1)] lg:block"></div>
-                  <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">Step {s.n}</div>
+                  <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">Paso {s.n}</div>
                   <h3 class="mt-4 text-2xl font-semibold tracking-[-0.04em] text-white">{s.title}</h3>
                   <p class="mt-4 max-w-2xl text-base leading-8 text-brand-muted">{s.desc}</p>
                 </article>

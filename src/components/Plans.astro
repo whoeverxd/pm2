@@ -2,52 +2,52 @@
 const plans = [
   {
     id: 'starter',
-    label: 'Starter',
-    name: 'Launch Page',
-    price: '$900',
-    delivery: 'Ideal for a focused service offer',
+    label: 'Plan 1',
+    name: 'Landing sencilla',
+    price: '$50',
+    delivery: 'Ideal para comenzar con una presencia simple y profesional',
     features: [
-      'Custom homepage design',
-      'Conversion-focused messaging structure',
-      'Responsive build and speed optimization',
-      'Inquiry or WhatsApp CTA integration',
-      'Launch support and QA',
+      '1 página con información clave, horarios o precios',
+      'Botón directo a WhatsApp',
+      'Código QR para compartir',
+      'Subdominio propio',
+      'Perfil de Google Business opcional',
     ],
-    ctaText: 'Request Starter',
-    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20plan%20Launch%20Page',
+    ctaText: 'Consultar Plan 1',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%201%20Landing%20sencilla',
   },
   {
     id: 'signature',
-    label: 'Signature',
-    name: 'Agency Website',
-    price: '$1,800',
-    delivery: 'For brands that need depth and authority',
+    label: 'Plan 2',
+    name: 'Landing con catálogo',
+    price: '$90',
+    delivery: 'Para mostrar productos, menús, servicios o galería',
     highlight: true,
     features: [
-      'Multi-section editorial website',
-      'Visual direction and premium UI system',
-      'Advanced conversion structure',
-      'Portfolio, services and proof modules',
-      'Launch support and analytics baseline',
+      'Todo lo del Plan 1',
+      'Galería de fotos o catálogo de productos',
+      'Diseño más personalizado',
+      'QR con reseñas de Google',
+      'Mejor estructura para vender o cotizar',
     ],
-    ctaText: 'Request Signature',
-    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20plan%20Agency%20Website',
+    ctaText: 'Consultar Plan 2',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%202%20Landing%20con%20cat%C3%A1logo',
   },
   {
     id: 'atelier',
-    label: 'Atelier',
-    name: 'Custom Growth System',
-    price: 'Custom',
-    delivery: 'For premium brands with wider scope',
+    label: 'Plan 3',
+    name: 'Sitio corporativo',
+    price: 'Desde $250',
+    delivery: 'Para negocios que necesitan más secciones y presencia de marca',
     features: [
-      'Strategy workshop and positioning review',
-      'Custom pages, case studies and funnels',
-      'Design system for future expansion',
-      'Advanced integrations and launch planning',
-      'Priority collaboration',
+      '5 a 7 páginas: inicio, nosotros, servicios y contacto',
+      'Diseño más personalizado',
+      'Formulario de contacto',
+      'Dominio propio incluido',
+      'SEO básico y analítica inicial',
     ],
-    ctaText: 'Book Discovery',
-    ctaMessage: 'Hola%20ProgramMasters%2C%20quiero%20hablar%20sobre%20un%20proyecto%20Custom%20Growth%20System',
+    ctaText: 'Consultar Plan 3',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%203%20Sitio%20corporativo',
   },
 ];
 ---
@@ -55,12 +55,12 @@ const plans = [
 <section id="planes" class="section relative">
   <div class="container-x">
     <div class="max-w-3xl">
-      <div class="eyebrow mb-5 inline-flex">Pricing</div>
+      <div class="eyebrow mb-5 inline-flex">Planes</div>
       <h2 class="section-title max-w-4xl">
-        Clear packages for teams that want premium work without enterprise bloat.
+        Planes claros para comenzar sin complicarte.
       </h2>
       <p class="mt-6 editorial-copy">
-        These ranges keep the engagement simple. Final pricing depends on scope, content readiness and the amount of strategy your team needs.
+        Estos precios sirven como base para negocios y profesionales que quieren arrancar rápido. Si tu caso necesita más alcance, lo ajustamos contigo.
       </p>
     </div>
 
@@ -74,7 +74,7 @@ const plans = [
 
               {plan.highlight && (
                 <div class="absolute right-5 top-5 rounded-full border border-brand-blue/40 bg-brand-blue/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white">
-                  Most Requested
+                  Más solicitado
                 </div>
               )}
 
@@ -108,7 +108,7 @@ const plans = [
                   href={`https://wa.me/584244074025?text=${plan.ctaMessage}`}
                   target="_blank"
                   rel="noopener"
-                  class={`mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition ${plan.highlight ? 'bg-brand-blue text-white hover:bg-brand-blueDark hover:shadow-glow' : 'border border-white/10 bg-white/[0.04] text-white hover:border-white/20 hover:bg-white/[0.07]'}`}
+                  class={`mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition ${plan.highlight ? 'bg-brand-blue text-white hover:bg-brand-blueDark' : 'border border-white/10 bg-white/[0.04] text-white hover:border-white/20 hover:bg-white/[0.07]'}`}
                 >
                   {plan.ctaText}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -122,7 +122,7 @@ const plans = [
     </div>
 
     <div class="mt-10 text-sm text-brand-muted">
-      Need a tailored scope? <a href="#contacto" class="font-semibold text-white transition hover:text-brand-blue">Let’s shape it together.</a>
+      ¿Necesitas algo más a medida? <a href="#contacto" class="font-semibold text-white transition hover:text-brand-blue">Lo revisamos contigo.</a>
     </div>
   </div>
 </section>
