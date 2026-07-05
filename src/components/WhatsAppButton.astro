@@ -30,12 +30,12 @@ const recipientEmail = 'hola@programmasters.net';
     aria-label="Cerrar formulario"
   ></button>
 
-  <aside class="absolute inset-x-3 bottom-3 max-h-[calc(100vh-1.5rem)] overflow-hidden rounded-[28px] border border-white/10 bg-[#08101F]/96 shadow-[0_32px_120px_-42px_rgba(0,0,0,0.9)] transition duration-300 sm:inset-x-auto sm:right-5 sm:top-5 sm:bottom-5 sm:w-[420px]">
+  <aside class="absolute inset-x-3 bottom-3 max-h-[calc(100vh-1.5rem)] overflow-hidden rounded-[28px] border border-white/10 bg-[#08101F]/96 shadow-[0_32px_120px_-42px_rgba(0,0,0,0.9)] transition duration-300 sm:inset-x-auto sm:right-5 sm:bottom-5 sm:w-[420px] sm:max-h-[680px]">
     <div class="flex items-center justify-between border-b border-white/10 px-5 py-4">
       <div class="flex items-center gap-3">
         <img src="/isotipo.png" alt="" width="32" height="32" class="shrink-0 rounded-full object-contain" aria-hidden="true" />
         <div>
-          <div class="text-sm font-semibold text-white">ProgramMasters</div>
+          <div class="text-sm font-semibold text-white">Contactanos via WhatsApp</div>
           <div class="text-xs text-brand-muted">Respuesta inicial en pocos minutos</div>
         </div>
       </div>
@@ -51,15 +51,8 @@ const recipientEmail = 'hola@programmasters.net';
       </button>
     </div>
 
-    <div class="flex h-full flex-col">
-      <div class="space-y-4 border-b border-white/10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_48%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent)] px-5 py-5">
-        <div class="max-w-[84%] rounded-[20px] rounded-tl-md bg-white/[0.04] px-4 py-3 text-sm leading-7 text-white shadow-[0_20px_60px_-40px_rgba(0,0,0,0.9)]">
-          Hola. Antes de abrir WhatsApp, déjanos tu nombre y teléfono para poder contactarte si se corta la conversación.
-        </div>
-        <div class="max-w-[84%] rounded-[20px] rounded-tl-md border border-brand-yellow/15 bg-brand-yellow/[0.08] px-4 py-3 text-sm leading-7 text-brand-text">
-          Esto nos ayuda a hacer seguimiento a negocios, profesionales, consultores, clínicas y marcas personales que todavía no tienen una presencia digital sólida.
-        </div>
-      </div>
+    <div class="flex max-h-[inherit] flex-col">
+      <div class="border-b border-white/10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_48%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent)] px-5 py-5"></div>
 
       <form id="wa-lead-form" class="flex flex-1 flex-col gap-4 overflow-y-auto px-5 py-5">
         <input type="hidden" name="_subject" value="Nuevo lead desde drawer de WhatsApp" />
@@ -90,21 +83,12 @@ const recipientEmail = 'hola@programmasters.net';
         </label>
 
         <label class="block">
-          <span class="mb-2 block text-sm font-medium text-white">Negocio o profesión</span>
-          <input
-            type="text"
-            name="business"
-            placeholder="Ej. Consultorio dental, estudio jurídico, ferretería"
-            class="w-full rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition placeholder:text-brand-muted focus:border-brand-blue"
-          />
-        </label>
-
-        <label class="block">
-          <span class="mb-2 block text-sm font-medium text-white">Cuéntanos qué necesitas</span>
+          <span class="mb-2 block text-sm font-medium text-white">Tu mensaje</span>
           <textarea
             name="message"
             rows="4"
-            placeholder="Quiero mi primera web, mostrar mis servicios y recibir contactos por WhatsApp."
+            required
+            placeholder="Envianos un mensaje, rompe el hielo con nosotros, estamos aqui para ayudarte."
             class="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition placeholder:text-brand-muted focus:border-brand-blue"
           ></textarea>
         </label>
@@ -113,11 +97,8 @@ const recipientEmail = 'hola@programmasters.net';
 
         <div class="mt-auto flex flex-col gap-3 border-t border-white/10 pt-4">
           <button type="submit" class="btn-primary w-full justify-center">
-            Guardar y abrir WhatsApp
+            Enviar mensaje
           </button>
-          <p class="text-xs leading-6 text-brand-muted">
-            Primero guardamos tus datos para hacer seguimiento. Luego abrimos WhatsApp con tu mensaje listo.
-          </p>
         </div>
       </form>
     </div>
@@ -156,12 +137,12 @@ const recipientEmail = 'hola@programmasters.net';
     status.classList.add('border-brand-yellow/20', 'bg-brand-yellow/[0.08]', 'text-white');
   };
 
-  const openWhatsApp = (name, business, note) => {
+  const openWhatsApp = (name, phoneNumber, message) => {
     const parts = [
       whatsappBaseMessage,
       `Mi nombre es ${name}.`,
-      business ? `Mi negocio/profesion es ${business}.` : '',
-      note ? `Necesito: ${note}` : '',
+      `Mi telefono es ${phoneNumber}.`,
+      message,
     ].filter(Boolean);
 
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(parts.join(' '))}`;
@@ -187,14 +168,13 @@ const recipientEmail = 'hola@programmasters.net';
     const formData = new FormData(currentForm);
     const name = String(formData.get('name') || '').trim();
     const phoneNumber = String(formData.get('phone') || '').trim();
-    const business = String(formData.get('business') || '').trim();
-    const note = String(formData.get('message') || '').trim();
+    const message = String(formData.get('message') || '').trim();
     const honeypot = String(formData.get('website') || '').trim();
 
     if (honeypot) return;
 
-    if (!name || !phoneNumber) {
-      showStatus('Necesitamos al menos tu nombre y teléfono.', 'error');
+    if (!name || !phoneNumber || !message) {
+      showStatus('Necesitamos tu nombre, teléfono y mensaje.', 'error');
       return;
     }
 
@@ -220,11 +200,11 @@ const recipientEmail = 'hola@programmasters.net';
 
       showStatus('Datos guardados. Abriendo WhatsApp...', 'success');
       currentForm.reset();
-      openWhatsApp(name, business, note);
+      openWhatsApp(name, phoneNumber, message);
       window.setTimeout(() => setDrawer(false), 900);
     } catch (error) {
       showStatus('No pudimos guardar tus datos ahora mismo. Puedes continuar por WhatsApp y luego revisamos la captura.', 'error');
-      openWhatsApp(name, business, note);
+      openWhatsApp(name, phoneNumber, message);
     } finally {
       submitButton?.removeAttribute('disabled');
       submitButton?.classList.remove('opacity-70', 'cursor-not-allowed');
