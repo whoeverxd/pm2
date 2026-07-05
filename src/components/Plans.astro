@@ -5,7 +5,17 @@ const plans = [
     label: 'Plan 1',
     name: 'Landing sencilla',
     price: '$50',
+    pricePrefix: '',
     delivery: 'Ideal para comenzar con una presencia simple y profesional',
+    theme: {
+      border: 'border-[#1f7cc2]/70',
+      surface: 'bg-[linear-gradient(180deg,rgba(31,124,194,0.24),rgba(11,26,49,0.96))]',
+      stripe: 'bg-[#1f7cc2]',
+      badge: 'border-[#1f7cc2]/50 bg-[#1f7cc2]/18 text-[#9fdcff]',
+      price: 'text-[#59b7ff]',
+      icon: 'text-[#33a1ff]',
+      button: 'bg-[#1f7cc2] text-white hover:bg-[#16689f]',
+    },
     features: [
       '1 página con información clave, horarios o precios',
       'Botón directo a WhatsApp',
@@ -21,8 +31,18 @@ const plans = [
     label: 'Plan 2',
     name: 'Landing con catálogo',
     price: '$90',
+    pricePrefix: '',
     delivery: 'Para mostrar productos, menús, servicios o galería',
     highlight: true,
+    theme: {
+      border: 'border-[#b3263e]/75',
+      surface: 'bg-[linear-gradient(180deg,rgba(179,38,62,0.24),rgba(41,12,22,0.97))]',
+      stripe: 'bg-[#b3263e]',
+      badge: 'border-[#d2435a]/50 bg-[#d2435a]/16 text-[#ffb7c1]',
+      price: 'text-[#ff4e69]',
+      icon: 'text-[#ff4e69]',
+      button: 'bg-[#b3263e] text-white hover:bg-[#8f1d31]',
+    },
     features: [
       'Todo lo del Plan 1',
       'Galería de fotos o catálogo de productos',
@@ -37,8 +57,18 @@ const plans = [
     id: 'atelier',
     label: 'Plan 3',
     name: 'Sitio corporativo',
-    price: 'Desde $250',
+    price: '$250',
+    pricePrefix: 'desde',
     delivery: 'Para negocios que necesitan más secciones y presencia de marca',
+    theme: {
+      border: 'border-[#d9b01c]/75',
+      surface: 'bg-[linear-gradient(180deg,rgba(217,176,28,0.22),rgba(46,33,4,0.97))]',
+      stripe: 'bg-[#d9b01c]',
+      badge: 'border-[#d9b01c]/50 bg-[#d9b01c]/16 text-[#ffe38a]',
+      price: 'text-[#ffd24d]',
+      icon: 'text-[#ffd24d]',
+      button: 'bg-[#d9b01c] text-[#1a1303] hover:bg-[#f0c737]',
+    },
     features: [
       '5 a 7 páginas: inicio, nosotros, servicios y contacto',
       'Diseño más personalizado',
@@ -68,35 +98,39 @@ const plans = [
       {
         plans.map((plan) => (
             <div
-              class={`panel relative flex flex-col overflow-hidden p-8 sm:p-10 ${plan.highlight ? 'border-brand-blue/40 bg-[linear-gradient(180deg,rgba(59,130,246,0.14),rgba(13,21,40,0.94))]' : ''}`}
+              class={`panel relative flex flex-col overflow-hidden p-8 sm:p-10 ${plan.theme.border} ${plan.theme.surface}`}
             >
-              <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_24%)] pointer-events-none"></div>
+              <div class={`absolute inset-x-0 top-0 h-4 ${plan.theme.stripe}`}></div>
+              <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_24%)] pointer-events-none"></div>
 
               {plan.highlight && (
-                <div class="absolute right-5 top-5 rounded-full border border-brand-blue/40 bg-brand-blue/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white">
+                <div class={`absolute right-5 top-6 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${plan.theme.badge}`}>
                   Más solicitado
                 </div>
               )}
 
-              <div class="relative">
-                <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-muted">
+              <div class="relative pt-4">
+                <span class={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${plan.theme.badge}`}>
                   {plan.label}
                 </span>
 
                 <h3 class="mt-6 text-3xl font-semibold tracking-[-0.05em] text-white">{plan.name}</h3>
 
                 <div class="mt-8 flex items-end gap-2">
-                  <span class="font-display text-5xl tracking-[-0.06em] text-white sm:text-6xl">{plan.price}</span>
+                  {plan.pricePrefix && (
+                    <span class={`mb-2 text-lg font-semibold uppercase tracking-[0.14em] ${plan.theme.price}`}>{plan.pricePrefix}</span>
+                  )}
+                  <span class={`font-display text-5xl tracking-[-0.06em] sm:text-6xl ${plan.theme.price}`}>{plan.price}</span>
                 </div>
 
-                <div class="mt-3 text-sm leading-7 text-brand-muted">{plan.delivery}</div>
+                <div class="mt-3 text-sm leading-7 text-white/72">{plan.delivery}</div>
 
-                <div class="my-8 h-px bg-white/10"></div>
+                <div class="my-8 h-px bg-white/12"></div>
 
                 <ul class="space-y-4 text-sm">
                   {plan.features.map((f) => (
                     <li class="flex items-start gap-3">
-                      <svg class="mt-0.5 shrink-0 text-brand-blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <svg class={`mt-0.5 shrink-0 ${plan.theme.icon}`} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                         <path d="M5 12l5 5L20 7"/>
                       </svg>
                       <span class="text-white/90 leading-7">{f}</span>
@@ -108,7 +142,7 @@ const plans = [
                   href={`https://wa.me/584244074025?text=${plan.ctaMessage}`}
                   target="_blank"
                   rel="noopener"
-                  class={`mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition ${plan.highlight ? 'bg-brand-blue text-white hover:bg-brand-blueDark' : 'border border-white/10 bg-white/[0.04] text-white hover:border-white/20 hover:bg-white/[0.07]'}`}
+                  class={`mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition ${plan.theme.button}`}
                 >
                   {plan.ctaText}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
