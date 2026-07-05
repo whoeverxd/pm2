@@ -12,46 +12,149 @@ const testimonials = [
     role: 'Ingeniero consultor',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
   },
+  {
+    quote: 'Lo mejor fue la claridad del proceso. En pocos días ya teníamos una web profesional, rápida y lista para compartir con clientes nuevos.',
+    name: 'Valentina Suárez',
+    role: 'Consultora independiente',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80',
+  },
 ];
 ---
 
-<section class="section relative">
+<section class="section relative overflow-hidden">
   <div class="container-x">
-    <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
-      <div class="lg:col-span-4">
-        <div class="eyebrow mb-5">Testimonios</div>
-        <h2 class="section-title">
-          La confianza no se promete. Se construye con resultados visibles.
-        </h2>
-        <p class="mt-6 section-kicker max-w-md">
-          Cuando la web explica mejor tu servicio, el negocio empieza a verse distinto.
-        </p>
+    <div class="relative overflow-hidden rounded-[34px] bg-[#111111]/92 px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+      <div class="pointer-events-none absolute inset-0 opacity-30">
+        <div class="absolute -left-20 bottom-0 h-72 w-72 rounded-full border border-white/8 [mask-image:radial-gradient(circle,black_36%,transparent_72%)]"></div>
+        <div class="absolute right-[-4rem] top-[-2rem] h-80 w-80 rounded-full border border-white/8 [mask-image:radial-gradient(circle,black_36%,transparent_72%)]"></div>
       </div>
 
-      <div class="lg:col-span-8 grid gap-5 md:grid-cols-2">
-        {
-          testimonials.map((testimonial) => (
-            <article class="panel panel-hover flex h-full flex-col justify-between p-8 sm:p-10">
-              <p class="text-xl leading-9 tracking-[-0.03em] text-white sm:text-2xl sm:leading-10">
-                “{testimonial.quote}”
-              </p>
+      <div class="relative grid gap-10 lg:grid-cols-[minmax(280px,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-12">
+        <div class="flex h-full flex-col justify-between">
+          <div>
+            <div class="eyebrow mb-5 text-white/80">
+              <span class="h-2.5 w-2.5 rounded-full bg-[#b3263e]"></span>
+              Experiencias reales
+            </div>
+            <h2 class="heading max-w-[10ch] text-[2.8rem] leading-[0.95] sm:text-[4rem] lg:text-[4.8rem]">
+              Testimonios y resultados
+            </h2>
+            <p class="mt-6 max-w-md text-base leading-8 text-white/58 sm:text-lg">
+              Cuando un sitio explica mejor lo que haces, transmite confianza y hace más fácil escribirte, el negocio cambia.
+            </p>
+          </div>
 
-              <div class="mt-10 flex items-center gap-4 border-t border-white/10 pt-6">
+          <div class="mt-10 flex items-center gap-4 sm:mt-14">
+            <div class="flex -space-x-3">
+              {testimonials.slice(0, 3).map((testimonial) => (
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  class="h-14 w-14 rounded-full object-cover"
+                  class="h-12 w-12 rounded-full border-2 border-[#111111] object-cover"
                   loading="lazy"
                 />
-                <div>
-                  <div class="font-semibold tracking-[-0.02em] text-white">{testimonial.name}</div>
-                  <div class="text-sm text-brand-muted">{testimonial.role}</div>
-                </div>
-              </div>
-            </article>
-          ))
-        }
+              ))}
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-2xl font-semibold text-[#b3263e]">+</div>
+            </div>
+            <div class="text-xl font-semibold tracking-[-0.03em] text-white">Negocios que ya dieron el paso</div>
+          </div>
+        </div>
+
+        <div class="relative overflow-hidden" data-testimonial-slider>
+          <div class="flex transition-transform duration-500 ease-out" data-testimonial-track>
+            {
+              testimonials.map((testimonial) => (
+                <article class="w-full shrink-0 pr-0">
+                  <div class="min-h-[420px] rounded-[28px] bg-transparent px-0 py-1 sm:min-h-[380px]">
+                    <p class="max-w-[19ch] text-[1.55rem] leading-[1.5] tracking-[-0.04em] text-white/72 sm:text-[1.9rem] lg:text-[2.15rem]">
+                      “{testimonial.quote}”
+                    </p>
+
+                    <div class="mt-10 flex items-center gap-4">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        class="h-16 w-16 rounded-full object-cover"
+                        loading="lazy"
+                      />
+                      <div>
+                        <div class="text-[1.35rem] font-semibold tracking-[-0.03em] text-white">{testimonial.name}</div>
+                        <div class="text-base text-white/45">{testimonial.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+
+          <div class="mt-10 flex items-center justify-between gap-6">
+            <div class="flex items-center gap-2" data-testimonial-dots>
+              {testimonials.map((_, index) => (
+                <button
+                  type="button"
+                  class={`h-2.5 rounded-full transition-all ${index === 0 ? 'w-8 bg-[#b3263e]' : 'w-2.5 bg-white/18 hover:bg-white/30'}`}
+                  data-dot={index}
+                  aria-label={`Ir al testimonio ${index + 1}`}
+                ></button>
+              ))}
+            </div>
+
+            <div class="text-[4rem] font-semibold leading-none text-[#b3263e]">”</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const sliders = document.querySelectorAll('[data-testimonial-slider]');
+
+  sliders.forEach((slider) => {
+    const track = slider.querySelector('[data-testimonial-track]');
+    const dots = Array.from(slider.querySelectorAll('[data-dot]'));
+
+    if (!(track instanceof HTMLElement) || dots.length === 0) return;
+
+    let index = 0;
+    let intervalId;
+
+    const render = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('bg-[#b3263e]', dotIndex === index);
+        dot.classList.toggle('w-8', dotIndex === index);
+        dot.classList.toggle('bg-white/18', dotIndex !== index);
+        dot.classList.toggle('w-2.5', dotIndex !== index);
+      });
+    };
+
+    const start = () => {
+      intervalId = window.setInterval(() => {
+        index = (index + 1) % dots.length;
+        render();
+      }, 4500);
+    };
+
+    const stop = () => {
+      if (intervalId) window.clearInterval(intervalId);
+    };
+
+    dots.forEach((dot, dotIndex) => {
+      dot.addEventListener('click', () => {
+        index = dotIndex;
+        render();
+        stop();
+        start();
+      });
+    });
+
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+
+    render();
+    start();
+  });
+</script>
