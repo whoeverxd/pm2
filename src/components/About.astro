@@ -18,8 +18,8 @@ const missionCards = [
 
 <section id="mision" class="section relative">
   <div class="container-x">
-    <div class="grid gap-8 xl:grid-cols-[340px_minmax(0,1fr)_390px] xl:items-start">
-      <div class="space-y-5">
+    <div class="grid gap-8 xl:grid-cols-[340px_minmax(0,1fr)_390px] xl:items-stretch">
+      <div class="space-y-5 xl:flex xl:h-full xl:flex-col xl:justify-between xl:space-y-0">
         {
           missionCards.map((card) => (
             <article class={`rounded-[28px] border p-7 transition duration-300 ${card.featured ? 'border-white/12 bg-white/[0.05]' : 'border-white/8 bg-transparent hover:border-white/16 hover:bg-white/[0.03]'}`}>
@@ -49,7 +49,7 @@ const missionCards = [
 
         <div class="min-h-[320px] overflow-hidden rounded-[30px] border border-white/10 bg-brand-surface">
           <img
-            src="/multi-ethnic-diverse-business-team-coworkers-colle-KW97Z92.webp"
+            src="/1.webp"
             alt="Equipo colaborando en una reunion de trabajo"
             class="h-full w-full object-cover"
           />
