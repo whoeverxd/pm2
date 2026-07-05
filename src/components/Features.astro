@@ -1,0 +1,56 @@
+---
+const features = [
+  {
+    title: '100% Seguro',
+    desc: 'Sitios protegidos con HTTPS y copias de respaldo automáticas.',
+    color: '#1E63D6',
+    icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
+  },
+  {
+    title: 'Rápido y optimizado',
+    desc: 'Carga en menos de un segundo y perfectamente adaptado a móviles.',
+    color: '#C0202B',
+    icon: `<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>`,
+  },
+  {
+    title: 'Soporte real',
+    desc: 'Hablas con humanos, no bots. Te acompañamos antes, durante y después.',
+    color: '#F4B400',
+    icon: `<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>`,
+  },
+  {
+    title: 'Hecho a medida',
+    desc: 'Cada proyecto es único, como tu negocio. Nada de plantillas repetidas.',
+    color: '#1E63D6',
+    icon: `<path d="M12 20l9-16H3z"/>`,
+  },
+];
+---
+
+<section class="section relative">
+  <div class="container-x">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="eyebrow inline-flex justify-center mb-5">Por qué ProgramMasters</div>
+      <h2 class="heading text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        Todo lo que necesitas, <span class="text-brand-blue">sin excusas</span>.
+      </h2>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {
+        features.map((f) => (
+          <div class="card card-hover p-6 text-center">
+            <div
+              class="mx-auto h-14 w-14 rounded-2xl flex items-center justify-center mb-5"
+              style={`background-color: ${f.color}22; color: ${f.color};`}
+            >
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" set:html={f.icon} />
+            </div>
+            <h3 class="font-bold text-white text-lg">{f.title}</h3>
+            <p class="mt-2 text-sm text-brand-muted leading-relaxed">{f.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

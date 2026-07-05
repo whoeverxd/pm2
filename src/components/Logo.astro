@@ -1,0 +1,37 @@
+---
+interface Props {
+  size?: number;
+  withTagline?: boolean;
+  class?: string;
+}
+
+const { size = 44, withTagline = false, class: className = '' } = Astro.props;
+---
+
+<a href="#top" class={`inline-flex items-center gap-3 ${className}`} aria-label="ProgramMasters — Inicio">
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path d="M32 4 L58 19 V45 L32 60 L6 45 V19 Z" fill="#050B1F" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <path d="M18 46V20h9c5.5 0 9 2.8 9 7.4 0 4.6-3.5 7.4-9 7.4h-3.5V46z" fill="#1E63D6"/>
+    <path d="M28 46V20l8 12 8-12v26h-4.8V32l-3.2 4.3-3.2-4.3v14z" fill="#C0202B"/>
+    <path d="M29 14h10l-5 6z" fill="#F4B400"/>
+  </svg>
+  <div class="leading-tight">
+    <span class="block font-display font-black text-lg tracking-tight text-white">
+      <span class="text-brand-blue">PROGRAM</span><span class="text-brand-red">MASTERS</span>
+    </span>
+    {
+      withTagline && (
+        <span class="block text-[10px] font-semibold uppercase tracking-[0.25em] text-brand-muted">
+          Desarrollamos el futuro contigo
+        </span>
+      )
+    }
+  </div>
+</a>

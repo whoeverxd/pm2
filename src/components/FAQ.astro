@@ -1,0 +1,74 @@
+---
+const faqs = [
+  {
+    q: '¿Puedo pagar en bolívares o desde Venezuela?',
+    a: 'Sí. Aceptamos Zelle, Binance/USDT, Pago Móvil, PayPal y transferencias internacionales. Coordinamos el método que más te convenga.',
+  },
+  {
+    q: '¿Qué pasa si no tengo un dominio propio?',
+    a: 'No es problema. Te damos un subdominio nuestro (por ejemplo, tunegocio.programmasters.net) totalmente gratis. Cuando estés listo, migramos a tu propio dominio.',
+  },
+  {
+    q: '¿En cuánto tiempo tengo mi sitio listo?',
+    a: 'La Landing Sencilla en 3 días, la Landing con Catálogo entre 5 y 7 días, y el Sitio Corporativo entre 1 y 2 semanas. Todos los tiempos son a partir de recibir tu información y contenido.',
+  },
+  {
+    q: '¿Qué necesito para empezar?',
+    a: 'Solo necesitas: el nombre de tu negocio, tu logo (si tienes), fotos de tus productos o servicios, y una descripción básica. Si te falta algo, te ayudamos a resolverlo.',
+  },
+  {
+    q: '¿El precio incluye hosting?',
+    a: 'Los precios del sitio son de creación. Para mantener tu sitio activo mes a mes, contratas uno de nuestros planes de mantenimiento desde $5/mes, que incluye hosting.',
+  },
+  {
+    q: '¿Puedo actualizar el contenido después?',
+    a: 'Sí. Con cualquier plan de mantenimiento hacemos los cambios por ti sin costo extra dentro del tope de tu plan. También podemos capacitarte para que edites tú.',
+  },
+  {
+    q: '¿Y si no me gusta el diseño final?',
+    a: 'Antes de publicar te mostramos el diseño y ajustamos los detalles hasta que quede como lo imaginas. Nuestro trabajo no está listo hasta que tú digas que sí.',
+  },
+];
+---
+
+<section id="faq" class="section relative">
+  <div class="container-x">
+    <div class="grid lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-4">
+        <div class="eyebrow mb-5">Preguntas frecuentes</div>
+        <h2 class="heading text-3xl sm:text-4xl lg:text-5xl leading-tight">
+          Aclaramos <span class="text-brand-blue">todas</span> tus dudas.
+        </h2>
+        <p class="mt-5 text-brand-muted">
+          ¿No ves tu pregunta aquí? Escríbenos por WhatsApp y te respondemos rápido.
+        </p>
+        <a
+          href="https://wa.me/584244074025"
+          target="_blank"
+          rel="noopener"
+          class="btn-secondary mt-6"
+        >
+          Preguntar por WhatsApp
+        </a>
+      </div>
+
+      <div class="lg:col-span-8 space-y-3">
+        {
+          faqs.map((f, i) => (
+            <details class="group card p-6 [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
+                <span class="font-semibold text-white text-base sm:text-lg">{f.q}</span>
+                <span class="shrink-0 h-8 w-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center transition group-open:rotate-45 group-open:bg-brand-blue group-open:border-brand-blue">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 5v14M5 12h14"/>
+                  </svg>
+                </span>
+              </summary>
+              <p class="mt-4 text-brand-muted leading-relaxed">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

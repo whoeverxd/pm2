@@ -1,0 +1,48 @@
+---
+const steps = [
+  {
+    n: '01',
+    title: 'Nos cuentas de tu negocio',
+    desc: 'Por WhatsApp o llamada. Nos explicas qué haces, a quién te diriges y qué quieres lograr.',
+  },
+  {
+    n: '02',
+    title: 'Diseñamos y desarrollamos',
+    desc: 'Nuestros diseñadores y developers crean tu sitio con identidad propia y código optimizado.',
+  },
+  {
+    n: '03',
+    title: 'Revisamos juntos',
+    desc: 'Te mostramos el resultado, ajustamos los detalles que quieras y afinamos textos.',
+  },
+  {
+    n: '04',
+    title: 'Publicamos y capacitamos',
+    desc: 'Lanzamos tu sitio en subdominio o dominio propio, y te enseñamos a usarlo.',
+  },
+];
+---
+
+<section class="section relative">
+  <div class="container-x">
+    <div class="max-w-3xl">
+      <div class="eyebrow mb-5">Cómo trabajamos</div>
+      <h2 class="heading text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        De la idea al <span class="text-brand-red">lanzamiento</span>,
+        en <span class="text-brand-yellow">días</span>.
+      </h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {
+        steps.map((s) => (
+          <div class="card p-6 relative">
+            <div class="font-display font-black text-5xl text-white/10">{s.n}</div>
+            <h3 class="mt-2 font-bold text-white text-lg">{s.title}</h3>
+            <p class="mt-2 text-sm text-brand-muted leading-relaxed">{s.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

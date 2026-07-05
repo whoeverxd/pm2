@@ -1,0 +1,172 @@
+---
+const plans = [
+  {
+    id: 'landing',
+    label: 'Plan 1',
+    name: 'Landing Sencilla',
+    price: '$50',
+    priceSuffix: '',
+    delivery: 'Entrega en 3 días',
+    accent: 'blue',
+    features: [
+      '1 página con toda tu info',
+      'Horarios, precios y ubicación',
+      'Botón de WhatsApp directo',
+      'QR code para tarjetas y flyers',
+      'Subdominio propio incluido',
+      'Google Business Profile',
+    ],
+    ctaText: 'Quiero el Plan 1',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%201%20-%20Landing%20Sencilla',
+  },
+  {
+    id: 'catalogo',
+    label: 'Plan 2',
+    name: 'Landing con Catálogo',
+    price: '$90',
+    priceSuffix: '',
+    delivery: 'Entrega en 5-7 días',
+    accent: 'red',
+    highlight: true,
+    features: [
+      'Todo lo del Plan 1',
+      'Galería de fotos profesional',
+      'Catálogo de productos',
+      'Diseño 100% personalizado',
+      'QR con reseñas de Google',
+      'Optimización para móviles',
+    ],
+    ctaText: 'Quiero el Plan 2',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%202%20-%20Landing%20con%20Cat%C3%A1logo',
+  },
+  {
+    id: 'corporativo',
+    label: 'Plan 3',
+    name: 'Sitio Corporativo',
+    price: '$250',
+    priceSuffix: 'desde',
+    delivery: 'Entrega en 1-2 semanas',
+    accent: 'yellow',
+    features: [
+      '5 a 7 páginas completas',
+      'Inicio, nosotros, servicios, contacto',
+      'Diseño 100% personalizado',
+      'Formulario de contacto',
+      'Dominio propio incluido',
+      'SEO básico + Google Analytics',
+    ],
+    ctaText: 'Quiero el Plan 3',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%203%20-%20Sitio%20Corporativo',
+  },
+];
+
+const accentMap: Record<string, { border: string; bg: string; text: string; btn: string; label: string }> = {
+  blue: {
+    border: 'border-brand-blue/40',
+    bg: 'from-brand-blue/20 to-transparent',
+    text: 'text-brand-blue',
+    btn: 'bg-brand-blue hover:bg-brand-blueDark',
+    label: 'bg-brand-blue text-white',
+  },
+  red: {
+    border: 'border-brand-red/60',
+    bg: 'from-brand-red/25 to-transparent',
+    text: 'text-brand-red',
+    btn: 'bg-brand-red hover:bg-brand-redDark',
+    label: 'bg-brand-red text-white',
+  },
+  yellow: {
+    border: 'border-brand-yellow/50',
+    bg: 'from-brand-yellow/20 to-transparent',
+    text: 'text-brand-yellow',
+    btn: 'bg-brand-yellow hover:bg-brand-yellowDark text-brand-bg',
+    label: 'bg-brand-yellow text-brand-bg',
+  },
+};
+---
+
+<section id="planes" class="section relative">
+  <div class="container-x">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="eyebrow justify-center mb-5 inline-flex">Elige el plan ideal</div>
+      <h2 class="heading text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        Planes pensados para <span class="text-brand-blue">emprendedores</span>
+        y <span class="text-brand-red">pequeños negocios</span>.
+      </h2>
+      <p class="mt-5 text-brand-muted text-lg">
+        Precios válidos por tiempo limitado. Sin letra pequeña, sin sorpresas.
+      </p>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+      {
+        plans.map((plan) => {
+          const a = accentMap[plan.accent];
+          return (
+            <div
+              class={`relative card p-8 flex flex-col overflow-hidden ${a.border} ${plan.highlight ? 'md:-mt-4 md:mb-4 shadow-glowRed' : ''}`}
+            >
+              <div class={`absolute inset-0 bg-gradient-to-b ${a.bg} pointer-events-none opacity-60`}></div>
+
+              {plan.highlight && (
+                <div class="absolute top-4 right-4 rounded-full bg-brand-yellow px-3 py-1 text-[10px] font-black uppercase tracking-widest text-brand-bg">
+                  Más popular
+                </div>
+              )}
+
+              <div class="relative">
+                <span class={`inline-flex items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${a.label}`}>
+                  {plan.label}
+                </span>
+
+                <h3 class="mt-4 font-display font-black text-2xl text-white">{plan.name}</h3>
+
+                <div class="mt-6 flex items-baseline gap-2">
+                  {plan.priceSuffix && (
+                    <span class="text-sm text-brand-muted">{plan.priceSuffix}</span>
+                  )}
+                  <span class={`font-display font-black text-5xl ${a.text}`}>{plan.price}</span>
+                </div>
+
+                <div class="mt-2 text-sm text-brand-muted">{plan.delivery}</div>
+
+                <div class="my-6 h-px bg-white/10"></div>
+
+                <ul class="space-y-3 text-sm">
+                  {plan.features.map((f) => (
+                    <li class="flex items-start gap-3">
+                      <svg class="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <path d="M5 12l5 5L20 7" class={a.text}/>
+                      </svg>
+                      <span class="text-white/90">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={`https://wa.me/584244074025?text=${plan.ctaMessage}`}
+                  target="_blank"
+                  rel="noopener"
+                  class={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold text-white transition w-full ${a.btn}`}
+                >
+                  {plan.ctaText}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M13 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div class="mt-10 text-center text-sm text-brand-muted">
+      ¿No estás seguro cuál es el mejor para ti?
+      <a href="#contacto" class="text-white font-semibold underline underline-offset-4 hover:text-brand-yellow">
+        Cuéntanos de tu negocio
+      </a>
+      y te recomendamos.
+    </div>
+  </div>
+</section>
