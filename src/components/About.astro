@@ -1,99 +1,76 @@
 ---
-const stats = [
-  { value: '$50', label: 'Desde, para tu primera landing' },
-  { value: '3 días', label: 'Entrega express de tu sitio' },
-  { value: '100%', label: 'Adaptado a móviles y rápido' },
-  { value: 'LATAM', label: 'Apoyando emprendedores' },
+const projects = [
+  {
+    label: 'Featured Build 01',
+    title: 'A sharper digital presence for a boutique legal firm.',
+    description: 'We replaced a dated brochure site with a clear editorial system focused on authority, trust and qualified leads.',
+    metrics: ['+42% consultation requests', 'Launch in 3 weeks'],
+  },
+  {
+    label: 'Featured Build 02',
+    title: 'A luxury service brand positioned like a market leader.',
+    description: 'The new experience paired refined typography with cleaner offers, helping the team close better-fit clients faster.',
+    metrics: ['+31% lead quality', '12-country reach'],
+  },
 ];
 ---
 
-<section id="nosotros" class="section relative">
+<section id="proyectos" class="section relative">
   <div class="container-x">
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-6">
-        <div class="eyebrow mb-5">¿Quiénes somos?</div>
-        <h2 class="heading text-3xl sm:text-4xl lg:text-5xl leading-tight">
-          Somos un equipo de <span class="text-brand-blue">developers</span> y
-          <span class="text-brand-red">diseñadores gráficos</span> profesionales.
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        <div class="eyebrow mb-5">Featured Projects</div>
+        <h2 class="section-title">
+          Selected work designed to elevate perception and increase demand.
         </h2>
-        <p class="mt-6 text-lg text-brand-muted leading-relaxed">
-          Sabemos que para un emprendedor venezolano que apenas está arrancando su negocio,
-          desembolsar <strong class="text-white">$200 o $300</strong> por un sitio web o una
-          landing page puede sentirse imposible. Y aún así, sin presencia digital tu negocio
-          simplemente no crece.
+        <p class="mt-6 section-kicker max-w-md">
+          Every project is structured like a premium product launch: positioning first, design second,
+          execution always.
         </p>
-        <p class="mt-4 text-lg text-brand-muted leading-relaxed">
-          Por eso creamos <strong class="text-white">ProgramMasters</strong>: para ofrecerte un
-          producto <strong class="text-white">profesional, hecho por gente que sabe</strong>,
-          a un precio que sí puedes pagar mientras tu negocio despega.
-        </p>
-
-        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {
-            stats.map((s) => (
-              <div class="card p-4">
-                <div class="text-2xl font-black text-white">{s.value}</div>
-                <div class="text-xs text-brand-muted mt-1 leading-snug">{s.label}</div>
-              </div>
-            ))
-          }
-        </div>
       </div>
 
-      <div class="lg:col-span-6">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="card card-hover p-6">
-            <div class="h-12 w-12 rounded-xl bg-brand-blue/15 flex items-center justify-center mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E63D6" stroke-width="2">
-                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
-              </svg>
-            </div>
-            <h3 class="font-bold text-white text-lg">Desarrollo profesional</h3>
-            <p class="text-sm text-brand-muted mt-2">
-              Código limpio, moderno y optimizado. Sin plantillas genéricas.
-            </p>
-          </div>
+      <div class="lg:col-span-8 space-y-6">
+        {
+          projects.map((project, index) => (
+            <article class="panel panel-hover overflow-hidden p-4 sm:p-5">
+              <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+                <div class={`rounded-[24px] border border-white/10 p-6 sm:p-8 ${index === 0 ? 'bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_42%),linear-gradient(180deg,#111A30_0%,#0C1324_100%)]' : 'bg-[linear-gradient(180deg,#10192E_0%,#0B1221_100%)]'}`}>
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">{project.label}</div>
+                    <div class="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/70">Desktop Experience</div>
+                  </div>
+                  <div class="mt-10 grid gap-4 sm:grid-cols-[1.05fr_0.95fr]">
+                    <div class="space-y-4">
+                      <div class="h-3 w-24 rounded-full bg-white/12"></div>
+                      <div class="h-8 w-full rounded-full bg-white/10"></div>
+                      <div class="h-8 w-[88%] rounded-full bg-white/10"></div>
+                      <div class="h-8 w-[72%] rounded-full bg-white/10"></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                      <div class="rounded-[20px] border border-white/10 bg-white/[0.03] p-4">
+                        <div class="h-24 rounded-[18px] bg-white/10"></div>
+                      </div>
+                      <div class="rounded-[20px] border border-white/10 bg-brand-blue/[0.1] p-4">
+                        <div class="h-24 rounded-[18px] bg-white/10"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-          <div class="card card-hover p-6 mt-8">
-            <div class="h-12 w-12 rounded-xl bg-brand-red/15 flex items-center justify-center mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C0202B" stroke-width="2">
-                <circle cx="13.5" cy="6.5" r="2.5" fill="#C0202B"/>
-                <circle cx="17.5" cy="10.5" r="2.5" fill="#C0202B"/>
-                <circle cx="8.5" cy="7.5" r="2.5" fill="#C0202B"/>
-                <circle cx="6.5" cy="12.5" r="2.5" fill="#C0202B"/>
-                <path d="M12 22c-6 0-8-4-8-8s2-8 8-8c1 0 2 .5 2 2v4c0 1 1 2 2 2h4c1.5 0 2 1 2 2 0 4-4 6-10 6z"/>
-              </svg>
-            </div>
-            <h3 class="font-bold text-white text-lg">Diseño con identidad</h3>
-            <p class="text-sm text-brand-muted mt-2">
-              Cada proyecto refleja la personalidad real de tu marca.
-            </p>
-          </div>
-
-          <div class="card card-hover p-6">
-            <div class="h-12 w-12 rounded-xl bg-brand-yellow/15 flex items-center justify-center mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F4B400" stroke-width="2">
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-                <circle cx="12" cy="12" r="4" fill="#F4B400"/>
-              </svg>
-            </div>
-            <h3 class="font-bold text-white text-lg">Precios justos</h3>
-            <p class="text-sm text-brand-muted mt-2">
-              Calidad de agencia sin el precio de agencia. Pensado para LATAM.
-            </p>
-          </div>
-
-          <div class="card card-hover p-6 mt-8">
-            <div class="h-12 w-12 rounded-xl bg-brand-blue/15 flex items-center justify-center mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E63D6" stroke-width="2">
-                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-              </svg>
-            </div>
-            <h3 class="font-bold text-white text-lg">Soporte real</h3>
-            <p class="text-sm text-brand-muted mt-2">
-              Te acompañamos antes, durante y después del lanzamiento.
-            </p>
-          </div>
+                <div class="px-2 sm:px-3 lg:px-4">
+                  <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">Case Study Summary</div>
+                  <h3 class="mt-4 text-2xl font-semibold tracking-[-0.04em] text-white sm:text-[2rem]">{project.title}</h3>
+                  <p class="mt-4 text-base leading-8 text-brand-muted">{project.description}</p>
+                  <div class="mt-6 flex flex-wrap gap-3">
+                    {project.metrics.map((metric) => (
+                      <div class="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/80">{metric}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))
+        }
         </div>
       </div>
     </div>

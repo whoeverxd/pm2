@@ -1,46 +1,42 @@
 ---
 const faqs = [
   {
-    q: '¿Puedo pagar en bolívares o desde Venezuela?',
-    a: 'Sí. Aceptamos Zelle, Binance/USDT, Pago Móvil, PayPal y transferencias internacionales. Coordinamos el método que más te convenga.',
+    q: 'What kind of clients are you best for?',
+    a: 'Service brands, consultants, studios and premium local businesses that need a website to improve perception and convert better opportunities.',
   },
   {
-    q: '¿Qué pasa si no tengo un dominio propio?',
-    a: 'No es problema. Te damos un subdominio nuestro (por ejemplo, tunegocio.programmasters.net) totalmente gratis. Cuando estés listo, migramos a tu propio dominio.',
+    q: 'Do you write the copy too?',
+    a: 'We usually shape the messaging structure and can refine your existing copy. For deeper content strategy or full copywriting, we scope that as part of the project.',
   },
   {
-    q: '¿En cuánto tiempo tengo mi sitio listo?',
-    a: 'La Landing Sencilla en 3 días, la Landing con Catálogo entre 5 y 7 días, y el Sitio Corporativo entre 1 y 2 semanas. Todos los tiempos son a partir de recibir tu información y contenido.',
+    q: 'How long does a project usually take?',
+    a: 'Most focused landing pages launch in 1 to 2 weeks. More ambitious editorial websites typically take 2 to 4 weeks depending on scope and feedback speed.',
   },
   {
-    q: '¿Qué necesito para empezar?',
-    a: 'Solo necesitas: el nombre de tu negocio, tu logo (si tienes), fotos de tus productos o servicios, y una descripción básica. Si te falta algo, te ayudamos a resolverlo.',
+    q: 'Will the site be custom or based on a template?',
+    a: 'Custom. We build each project around your offer, audience and brand perception goals. No off-the-shelf layout recycling.',
   },
   {
-    q: '¿El precio incluye hosting?',
-    a: 'Los precios del sitio son de creación. Para mantener tu sitio activo mes a mes, contratas uno de nuestros planes de mantenimiento desde $5/mes, que incluye hosting.',
+    q: 'Can you work with my current domain and hosting?',
+    a: 'Yes. We can launch on your current setup, recommend a better stack or handle the migration if your existing environment is holding the site back.',
   },
   {
-    q: '¿Puedo actualizar el contenido después?',
-    a: 'Sí. Con cualquier plan de mantenimiento hacemos los cambios por ti sin costo extra dentro del tope de tu plan. También podemos capacitarte para que edites tú.',
-  },
-  {
-    q: '¿Y si no me gusta el diseño final?',
-    a: 'Antes de publicar te mostramos el diseño y ajustamos los detalles hasta que quede como lo imaginas. Nuestro trabajo no está listo hasta que tú digas que sí.',
+    q: 'Do you offer support after launch?',
+    a: 'Yes. We can provide post-launch refinement, updates and ongoing support when the site needs to keep evolving with the business.',
   },
 ];
 ---
 
 <section id="faq" class="section relative">
   <div class="container-x">
-    <div class="grid lg:grid-cols-12 gap-12">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
       <div class="lg:col-span-4">
-        <div class="eyebrow mb-5">Preguntas frecuentes</div>
-        <h2 class="heading text-3xl sm:text-4xl lg:text-5xl leading-tight">
-          Aclaramos <span class="text-brand-blue">todas</span> tus dudas.
+        <div class="eyebrow mb-5">FAQ</div>
+        <h2 class="section-title">
+          The practical questions clients ask before we start.
         </h2>
-        <p class="mt-5 text-brand-muted">
-          ¿No ves tu pregunta aquí? Escríbenos por WhatsApp y te respondemos rápido.
+        <p class="mt-6 section-kicker max-w-md">
+          If your case is unusual, we can scope it directly in a proposal.
         </p>
         <a
           href="https://wa.me/584244074025"
@@ -48,23 +44,23 @@ const faqs = [
           rel="noopener"
           class="btn-secondary mt-6"
         >
-          Preguntar por WhatsApp
+          Ask via WhatsApp
         </a>
       </div>
 
       <div class="lg:col-span-8 space-y-3">
         {
-          faqs.map((f, i) => (
-            <details class="group card p-6 [&_summary::-webkit-details-marker]:hidden">
+          faqs.map((f) => (
+            <details class="group panel p-6 sm:p-7 [&_summary::-webkit-details-marker]:hidden">
               <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
                 <span class="font-semibold text-white text-base sm:text-lg">{f.q}</span>
-                <span class="shrink-0 h-8 w-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center transition group-open:rotate-45 group-open:bg-brand-blue group-open:border-brand-blue">
+                <span class="shrink-0 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 transition group-open:rotate-45 group-open:border-brand-blue group-open:bg-brand-blue">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M12 5v14M5 12h14"/>
                   </svg>
                 </span>
               </summary>
-              <p class="mt-4 text-brand-muted leading-relaxed">{f.a}</p>
+              <p class="mt-4 max-w-3xl text-base leading-8 text-brand-muted">{f.a}</p>
             </details>
           ))
         }

@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'ProgramMasters — Sitios web profesionales a bajo costo',
-  description = 'Diseñamos y desarrollamos sitios web modernos, rápidos y profesionales para emprendedores y pequeños negocios. Landing desde $50 con entrega en 3 días.',
+  title = 'ProgramMasters — Premium websites for ambitious brands',
+  description = 'ProgramMasters designs high-conversion websites with premium visual direction, modern performance and bespoke creative systems for growing brands.',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
@@ -19,7 +19,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#050B1F" />
+    <meta name="theme-color" content="#060B18" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -38,7 +38,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 

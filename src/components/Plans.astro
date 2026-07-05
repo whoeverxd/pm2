@@ -1,144 +1,105 @@
 ---
 const plans = [
   {
-    id: 'landing',
-    label: 'Plan 1',
-    name: 'Landing Sencilla',
-    price: '$50',
-    priceSuffix: '',
-    delivery: 'Entrega en 3 días',
-    accent: 'blue',
+    id: 'starter',
+    label: 'Starter',
+    name: 'Launch Page',
+    price: '$900',
+    delivery: 'Ideal for a focused service offer',
     features: [
-      '1 página con toda tu info',
-      'Horarios, precios y ubicación',
-      'Botón de WhatsApp directo',
-      'QR code para tarjetas y flyers',
-      'Subdominio propio incluido',
-      'Google Business Profile',
+      'Custom homepage design',
+      'Conversion-focused messaging structure',
+      'Responsive build and speed optimization',
+      'Inquiry or WhatsApp CTA integration',
+      'Launch support and QA',
     ],
-    ctaText: 'Quiero el Plan 1',
-    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%201%20-%20Landing%20Sencilla',
+    ctaText: 'Request Starter',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20plan%20Launch%20Page',
   },
   {
-    id: 'catalogo',
-    label: 'Plan 2',
-    name: 'Landing con Catálogo',
-    price: '$90',
-    priceSuffix: '',
-    delivery: 'Entrega en 5-7 días',
-    accent: 'red',
+    id: 'signature',
+    label: 'Signature',
+    name: 'Agency Website',
+    price: '$1,800',
+    delivery: 'For brands that need depth and authority',
     highlight: true,
     features: [
-      'Todo lo del Plan 1',
-      'Galería de fotos profesional',
-      'Catálogo de productos',
-      'Diseño 100% personalizado',
-      'QR con reseñas de Google',
-      'Optimización para móviles',
+      'Multi-section editorial website',
+      'Visual direction and premium UI system',
+      'Advanced conversion structure',
+      'Portfolio, services and proof modules',
+      'Launch support and analytics baseline',
     ],
-    ctaText: 'Quiero el Plan 2',
-    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%202%20-%20Landing%20con%20Cat%C3%A1logo',
+    ctaText: 'Request Signature',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20plan%20Agency%20Website',
   },
   {
-    id: 'corporativo',
-    label: 'Plan 3',
-    name: 'Sitio Corporativo',
-    price: '$250',
-    priceSuffix: 'desde',
-    delivery: 'Entrega en 1-2 semanas',
-    accent: 'yellow',
+    id: 'atelier',
+    label: 'Atelier',
+    name: 'Custom Growth System',
+    price: 'Custom',
+    delivery: 'For premium brands with wider scope',
     features: [
-      '5 a 7 páginas completas',
-      'Inicio, nosotros, servicios, contacto',
-      'Diseño 100% personalizado',
-      'Formulario de contacto',
-      'Dominio propio incluido',
-      'SEO básico + Google Analytics',
+      'Strategy workshop and positioning review',
+      'Custom pages, case studies and funnels',
+      'Design system for future expansion',
+      'Advanced integrations and launch planning',
+      'Priority collaboration',
     ],
-    ctaText: 'Quiero el Plan 3',
-    ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%203%20-%20Sitio%20Corporativo',
+    ctaText: 'Book Discovery',
+    ctaMessage: 'Hola%20ProgramMasters%2C%20quiero%20hablar%20sobre%20un%20proyecto%20Custom%20Growth%20System',
   },
 ];
-
-const accentMap: Record<string, { border: string; bg: string; text: string; btn: string; label: string }> = {
-  blue: {
-    border: 'border-brand-blue/40',
-    bg: 'from-brand-blue/20 to-transparent',
-    text: 'text-brand-blue',
-    btn: 'bg-brand-blue hover:bg-brand-blueDark',
-    label: 'bg-brand-blue text-white',
-  },
-  red: {
-    border: 'border-brand-red/60',
-    bg: 'from-brand-red/25 to-transparent',
-    text: 'text-brand-red',
-    btn: 'bg-brand-red hover:bg-brand-redDark',
-    label: 'bg-brand-red text-white',
-  },
-  yellow: {
-    border: 'border-brand-yellow/50',
-    bg: 'from-brand-yellow/20 to-transparent',
-    text: 'text-brand-yellow',
-    btn: 'bg-brand-yellow hover:bg-brand-yellowDark text-brand-bg',
-    label: 'bg-brand-yellow text-brand-bg',
-  },
-};
 ---
 
 <section id="planes" class="section relative">
   <div class="container-x">
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="eyebrow justify-center mb-5 inline-flex">Elige el plan ideal</div>
-      <h2 class="heading text-3xl sm:text-4xl lg:text-5xl leading-tight">
-        Planes pensados para <span class="text-brand-blue">emprendedores</span>
-        y <span class="text-brand-red">pequeños negocios</span>.
+    <div class="max-w-3xl">
+      <div class="eyebrow mb-5 inline-flex">Pricing</div>
+      <h2 class="section-title max-w-4xl">
+        Clear packages for teams that want premium work without enterprise bloat.
       </h2>
-      <p class="mt-5 text-brand-muted text-lg">
-        Precios válidos por tiempo limitado. Sin letra pequeña, sin sorpresas.
+      <p class="mt-6 editorial-copy">
+        These ranges keep the engagement simple. Final pricing depends on scope, content readiness and the amount of strategy your team needs.
       </p>
     </div>
 
-    <div class="mt-14 grid md:grid-cols-3 gap-6">
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
       {
-        plans.map((plan) => {
-          const a = accentMap[plan.accent];
-          return (
+        plans.map((plan) => (
             <div
-              class={`relative card p-8 flex flex-col overflow-hidden ${a.border} ${plan.highlight ? 'md:-mt-4 md:mb-4 shadow-glowRed' : ''}`}
+              class={`panel relative flex flex-col overflow-hidden p-8 sm:p-10 ${plan.highlight ? 'border-brand-blue/40 bg-[linear-gradient(180deg,rgba(59,130,246,0.14),rgba(13,21,40,0.94))]' : ''}`}
             >
-              <div class={`absolute inset-0 bg-gradient-to-b ${a.bg} pointer-events-none opacity-60`}></div>
+              <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_24%)] pointer-events-none"></div>
 
               {plan.highlight && (
-                <div class="absolute top-4 right-4 rounded-full bg-brand-yellow px-3 py-1 text-[10px] font-black uppercase tracking-widest text-brand-bg">
-                  Más popular
+                <div class="absolute right-5 top-5 rounded-full border border-brand-blue/40 bg-brand-blue/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white">
+                  Most Requested
                 </div>
               )}
 
               <div class="relative">
-                <span class={`inline-flex items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${a.label}`}>
+                <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-muted">
                   {plan.label}
                 </span>
 
-                <h3 class="mt-4 font-display font-black text-2xl text-white">{plan.name}</h3>
+                <h3 class="mt-6 text-3xl font-semibold tracking-[-0.05em] text-white">{plan.name}</h3>
 
-                <div class="mt-6 flex items-baseline gap-2">
-                  {plan.priceSuffix && (
-                    <span class="text-sm text-brand-muted">{plan.priceSuffix}</span>
-                  )}
-                  <span class={`font-display font-black text-5xl ${a.text}`}>{plan.price}</span>
+                <div class="mt-8 flex items-end gap-2">
+                  <span class="font-display text-5xl tracking-[-0.06em] text-white sm:text-6xl">{plan.price}</span>
                 </div>
 
-                <div class="mt-2 text-sm text-brand-muted">{plan.delivery}</div>
+                <div class="mt-3 text-sm leading-7 text-brand-muted">{plan.delivery}</div>
 
-                <div class="my-6 h-px bg-white/10"></div>
+                <div class="my-8 h-px bg-white/10"></div>
 
-                <ul class="space-y-3 text-sm">
+                <ul class="space-y-4 text-sm">
                   {plan.features.map((f) => (
                     <li class="flex items-start gap-3">
-                      <svg class="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <path d="M5 12l5 5L20 7" class={a.text}/>
+                      <svg class="mt-0.5 shrink-0 text-brand-blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <path d="M5 12l5 5L20 7"/>
                       </svg>
-                      <span class="text-white/90">{f}</span>
+                      <span class="text-white/90 leading-7">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -147,7 +108,7 @@ const accentMap: Record<string, { border: string; bg: string; text: string; btn:
                   href={`https://wa.me/584244074025?text=${plan.ctaMessage}`}
                   target="_blank"
                   rel="noopener"
-                  class={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold text-white transition w-full ${a.btn}`}
+                  class={`mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition ${plan.highlight ? 'bg-brand-blue text-white hover:bg-brand-blueDark hover:shadow-glow' : 'border border-white/10 bg-white/[0.04] text-white hover:border-white/20 hover:bg-white/[0.07]'}`}
                 >
                   {plan.ctaText}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -156,17 +117,12 @@ const accentMap: Record<string, { border: string; bg: string; text: string; btn:
                 </a>
               </div>
             </div>
-          );
-        })
+          ))
       }
     </div>
 
-    <div class="mt-10 text-center text-sm text-brand-muted">
-      ¿No estás seguro cuál es el mejor para ti?
-      <a href="#contacto" class="text-white font-semibold underline underline-offset-4 hover:text-brand-yellow">
-        Cuéntanos de tu negocio
-      </a>
-      y te recomendamos.
+    <div class="mt-10 text-sm text-brand-muted">
+      Need a tailored scope? <a href="#contacto" class="font-semibold text-white transition hover:text-brand-blue">Let’s shape it together.</a>
     </div>
   </div>
 </section>

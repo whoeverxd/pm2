@@ -25,24 +25,35 @@ const steps = [
 
 <section class="section relative">
   <div class="container-x">
-    <div class="max-w-3xl">
-      <div class="eyebrow mb-5">Cómo trabajamos</div>
-      <h2 class="heading text-3xl sm:text-4xl lg:text-5xl leading-tight">
-        De la idea al <span class="text-brand-red">lanzamiento</span>,
-        en <span class="text-brand-yellow">días</span>.
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        <div class="eyebrow mb-5">Process</div>
+        <h2 class="section-title">
+          A four-step workflow with very little wasted motion.
+        </h2>
+        <p class="mt-6 section-kicker max-w-md">
+          Fast when it should be fast, rigorous where it matters.
+        </p>
       </h2>
-    </div>
+      </div>
 
-    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-      {
-        steps.map((s) => (
-          <div class="card p-6 relative">
-            <div class="font-display font-black text-5xl text-white/10">{s.n}</div>
-            <h3 class="mt-2 font-bold text-white text-lg">{s.title}</h3>
-            <p class="mt-2 text-sm text-brand-muted leading-relaxed">{s.desc}</p>
+      <div class="lg:col-span-8">
+        <div class="relative pl-0 lg:pl-8">
+          <div class="absolute left-3 top-0 hidden h-full w-px bg-white/10 lg:block"></div>
+          <div class="space-y-5">
+            {
+              steps.map((s) => (
+                <article class="panel panel-hover relative p-7 sm:p-8 lg:ml-8">
+                  <div class="absolute -left-[45px] top-10 hidden h-6 w-6 rounded-full border border-brand-blue/50 bg-brand-bg shadow-[0_0_0_6px_rgba(6,11,24,1)] lg:block"></div>
+                  <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">Step {s.n}</div>
+                  <h3 class="mt-4 text-2xl font-semibold tracking-[-0.04em] text-white">{s.title}</h3>
+                  <p class="mt-4 max-w-2xl text-base leading-8 text-brand-muted">{s.desc}</p>
+                </article>
+              ))
+            }
           </div>
-        ))
-      }
+        </div>
+      </div>
     </div>
   </div>
 </section>

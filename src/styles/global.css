@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -12,86 +16,108 @@
   body {
     @apply bg-brand-bg text-brand-text font-sans;
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(30, 99, 214, 0.25), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(192, 32, 43, 0.15), transparent 60%);
+      radial-gradient(circle at top, rgba(59, 130, 246, 0.16), transparent 0 36%),
+      radial-gradient(circle at 78% 16%, rgba(232, 197, 71, 0.08), transparent 0 20%),
+      linear-gradient(180deg, #08101f 0%, #060b18 30%, #060b18 100%);
     background-attachment: fixed;
   }
 
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at center, black 22%, transparent 82%);
+    opacity: 0.42;
+  }
+
   ::selection {
-    background: rgba(244, 180, 0, 0.35);
+    background: rgba(232, 197, 71, 0.35);
     color: #fff;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
 @layer components {
   .container-x {
-    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-12 xl:px-16;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3 font-semibold text-white transition hover:bg-brand-blueDark hover:shadow-glow;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-brand-blue/70 bg-brand-blue px-6 py-3 text-sm font-semibold tracking-[0.02em] text-white transition duration-300 hover:-translate-y-0.5 hover:bg-brand-blueDark;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 28px 80px -36px rgba(59, 130, 246, 0.42);
+  }
+
+  .btn-primary:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 28px 80px -36px rgba(59, 130, 246, 0.42);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10;
-  }
-
-  .btn-yellow {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-semibold text-brand-bg transition hover:bg-brand-yellowDark;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-semibold tracking-[0.02em] text-white transition duration-300 hover:-translate-y-0.5 hover:border-brand-yellow/40 hover:bg-white/[0.07];
   }
 
   .section {
-    @apply py-20 sm:py-24 lg:py-28;
+    @apply py-24 sm:py-28 lg:py-36;
   }
 
-  .card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition;
+  .panel {
+    @apply rounded-[20px] border border-white/10 bg-brand-surface/90 backdrop-blur-sm;
+    box-shadow: 0 24px 80px -48px rgba(0, 0, 0, 0.8);
   }
 
-  .card-hover {
-    @apply hover:border-white/20 hover:bg-white/[0.06] hover:-translate-y-1;
+  .panel-hover {
+    @apply transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-brand-surfaceAlt/90;
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-yellow;
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-muted;
+  }
+
+  .accent-chip {
+    @apply inline-flex items-center rounded-full border border-brand-yellow/25 bg-brand-yellow/[0.08] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-yellowSoft;
   }
 
   .heading {
-    @apply font-display font-black uppercase tracking-tight;
+    @apply font-display font-semibold tracking-[-0.04em] text-white;
   }
 
-  .grid-bg::before {
+  .grid-fade::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at center, black 28%, transparent 78%);
     pointer-events: none;
+  }
+
+  .editorial-copy {
+    @apply max-w-[640px] text-base leading-8 text-brand-muted sm:text-lg;
+  }
+
+  .section-title {
+    @apply heading text-[2rem] leading-[1.02] sm:text-[3rem] lg:text-[4.25rem];
+  }
+
+  .section-kicker {
+    @apply text-sm leading-7 text-brand-muted;
   }
 }
 
 @keyframes floaty {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-10px); }
 }
 
 .animate-floaty {
-  animation: floaty 6s ease-in-out infinite;
-}
-
-@keyframes pulseRing {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  100% { transform: scale(1.6); opacity: 0; }
-}
-
-.pulse-ring::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  background: rgba(37, 211, 102, 0.4);
-  animation: pulseRing 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: floaty 7s ease-in-out infinite;
 }
