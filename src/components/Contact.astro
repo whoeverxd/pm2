@@ -29,11 +29,11 @@ const contactCards = [
       <div class="absolute -right-16 top-0 h-64 w-64 rounded-full bg-brand-blue/20 blur-3xl"></div>
       <div class="absolute left-10 top-10 h-32 w-32 rounded-full bg-white/[0.05] blur-3xl"></div>
 
-      <div class="relative grid gap-10 lg:grid-cols-12 lg:items-end">
+      <div class="relative grid gap-10 lg:grid-cols-12 lg:items-stretch">
         <div class="lg:col-span-7">
           <div class="eyebrow mb-5">Contacto</div>
           <h2 class="section-title max-w-4xl">
-            Tu sitio web puede estar listo esta semana.
+            <span class="text-transparent [-webkit-text-stroke:2px_theme(colors.brand.blue)]">Tu sitio</span> web puede estar listo esta semana.
           </h2>
           <p class="mt-6 max-w-2xl text-lg leading-8 text-brand-muted">
             Cuéntanos qué haces, a quién atiendes y qué necesitas mostrar. Te proponemos una solución clara para empezar tu presencia digital sin complicaciones.
@@ -53,10 +53,10 @@ const contactCards = [
         </div>
 
         <div class="lg:col-span-5">
-          <div class="grid gap-3 sm:grid-cols-2">
+          <div class="grid gap-3 sm:grid-cols-2 lg:flex lg:h-full lg:flex-col lg:justify-between lg:gap-4">
             {
               contactCards.map((card) => (
-                <a href={card.href} target={card.href.startsWith('http') ? '_blank' : undefined} rel={card.href.startsWith('http') ? 'noopener' : undefined} class="panel panel-hover p-5">
+                <a href={card.href} target={card.href.startsWith('http') ? '_blank' : undefined} rel={card.href.startsWith('http') ? 'noopener' : undefined} class="panel panel-hover p-5 lg:flex-1">
                   <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">{card.label}</div>
                   <div class="mt-4 text-lg font-semibold tracking-[-0.03em] text-white">{card.value}</div>
                 </a>

@@ -36,7 +36,7 @@ const testimonials = [
               <span class="h-2.5 w-2.5 rounded-full bg-[#b3263e]"></span>
               Experiencias reales
             </div>
-            <h2 class="heading max-w-[10ch] text-[2.8rem] leading-[0.95] sm:text-[4rem] lg:text-[4.8rem]">
+            <h2 class="heading max-w-[10ch] text-[2.8rem] leading-[0.95] text-transparent [-webkit-text-stroke:2px_theme(colors.brand.blue)] sm:text-[4rem] lg:text-[4.8rem]">
               Testimonios y resultados
             </h2>
             <p class="mt-6 max-w-md text-base leading-8 text-white/58 sm:text-lg">
@@ -88,19 +88,15 @@ const testimonials = [
             }
           </div>
 
-          <div class="mt-10 flex items-center justify-between gap-6">
-            <div class="flex items-center gap-2" data-testimonial-dots>
+          <div class="mt-10 flex items-center justify-center" data-testimonial-dots>
               {testimonials.map((_, index) => (
                 <button
                   type="button"
-                  class={`h-2.5 rounded-full transition-all ${index === 0 ? 'w-8 bg-[#b3263e]' : 'w-2.5 bg-white/18 hover:bg-white/30'}`}
+                  class={`mx-1 h-3 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-brand-blue/60 ${index === 0 ? 'w-9 bg-[#b3263e]' : 'w-3 bg-[#9fdcff] hover:bg-white'}`}
                   data-dot={index}
                   aria-label={`Ir al testimonio ${index + 1}`}
                 ></button>
               ))}
-            </div>
-
-            <div class="text-[4rem] font-semibold leading-none text-[#b3263e]">”</div>
           </div>
         </div>
       </div>
@@ -125,9 +121,9 @@ const testimonials = [
 
       dots.forEach((dot, dotIndex) => {
         dot.classList.toggle('bg-[#b3263e]', dotIndex === index);
-        dot.classList.toggle('w-8', dotIndex === index);
-        dot.classList.toggle('bg-white/18', dotIndex !== index);
-        dot.classList.toggle('w-2.5', dotIndex !== index);
+        dot.classList.toggle('w-9', dotIndex === index);
+        dot.classList.toggle('bg-[#9fdcff]', dotIndex !== index);
+        dot.classList.toggle('w-3', dotIndex !== index);
       });
     };
 

@@ -4,53 +4,135 @@ const services = [
     number: '01',
     title: 'Landing sencilla',
     description: 'Una página clara para presentar tu negocio, servicios, horarios, precios y botón directo a WhatsApp.',
+    accent: {
+      border: 'border-brand-blue/30',
+      icon: 'text-brand-blue',
+      link: 'text-brand-blue',
+      glow: 'from-brand-blue/20',
+    },
+    cta: 'Ideal para empezar',
   },
   {
     number: '02',
     title: 'Landing con catálogo',
     description: 'Ideal si necesitas mostrar productos, galerías o un menú de servicios sin complicarte con una tienda completa.',
+    accent: {
+      border: 'border-[#b3263e]/40',
+      icon: 'text-[#ff4e69]',
+      link: 'text-[#ff4e69]',
+      glow: 'from-[#b3263e]/22',
+    },
+    cta: 'Más popular',
   },
   {
     number: '03',
     title: 'Sitio corporativo',
     description: 'Para negocios que necesitan varias secciones, diseño más personalizado, formulario de contacto y mejor presencia de marca.',
+    accent: {
+      border: 'border-brand-yellow/35',
+      icon: 'text-brand-yellow',
+      link: 'text-brand-yellowSoft',
+      glow: 'from-brand-yellow/20',
+    },
+    cta: 'Para crecer en grande',
   },
 ];
 ---
 
-<section id="servicios" class="section relative">
+<section id="servicios" class="section relative overflow-hidden">
   <div class="container-x">
-    <div class="grid gap-10 lg:grid-cols-12 lg:gap-8">
-      <div class="lg:col-span-4">
-        <div class="eyebrow mb-5">Servicios</div>
-        <h2 class="section-title">
-          Tres formas simples de empezar tu presencia digital.
-        </h2>
-        <p class="mt-6 section-kicker max-w-md">
-          Pensado para quienes necesitan salir bien presentados online sin pagar por complejidad innecesaria.
-        </p>
-      </div>
+    <div class="relative overflow-hidden rounded-[36px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.14),transparent_34%),linear-gradient(180deg,rgba(10,18,34,0.98),rgba(6,11,24,0.98))] px-6 py-8 sm:px-8 sm:py-10 lg:px-10 xl:px-12 xl:py-12">
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:72px_72px] opacity-50"></div>
+      <div class="absolute inset-y-0 left-0 w-full bg-[radial-gradient(circle_at_left_center,rgba(59,130,246,0.12),transparent_34%)]"></div>
 
-      <div class="lg:col-span-8 grid gap-5 md:grid-cols-3">
-        {
-          services.map((service) => (
-            <article class="panel panel-hover flex min-h-[320px] flex-col justify-between p-7">
-              <div>
-                <div class="text-[11px] uppercase tracking-[0.24em] text-brand-muted">{service.number}</div>
-                <h3 class="mt-10 text-2xl font-semibold tracking-[-0.04em] text-white">{service.title}</h3>
-                <p class="mt-4 text-base leading-8 text-brand-muted">{service.description}</p>
-              </div>
-              <div class="mt-10 flex items-center gap-3 text-sm text-white/75">
-                <span class="h-10 w-10 rounded-full border border-white/10 bg-white/[0.04] flex items-center justify-center">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M13 5l7 7-7 7"/>
-                  </svg>
-                </span>
-                Hecho para empezar rápido
-              </div>
-            </article>
-          ))
-        }
+      <div class="relative grid gap-10 xl:grid-cols-[minmax(320px,0.82fr)_minmax(0,1.18fr)] xl:gap-12">
+        <div class="flex flex-col justify-center xl:pb-10">
+          <div class="mb-5 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-muted sm:text-[11px]">
+            <span>Servicios</span>
+            <span class="h-px w-12 bg-white/20"></span>
+          </div>
+
+          <h2 class="heading max-w-[11ch] text-[2.72rem] leading-[0.92] tracking-[-0.06em] text-white sm:text-[3.85rem] lg:text-[4.85rem] xl:text-[5.45rem]">
+            Tres formas simples de <span class="text-transparent [-webkit-text-stroke:2px_theme(colors.brand.blue)]">empezar</span> tu presencia digital.
+          </h2>
+
+          <p class="mt-7 max-w-[32rem] text-[0.94rem] leading-[1.95] text-white/72 sm:text-[1.02rem]">
+            Soluciones claras y efectivas para que tu negocio se vea profesional, conecte con sus clientes y empiece a <span class="font-semibold text-brand-yellowSoft">generar resultados.</span>
+          </p>
+
+          <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <a href="#contacto" class="inline-flex items-center justify-center rounded-2xl border border-[#c6283f]/70 bg-[linear-gradient(180deg,#c6283f,#9f1f32)] px-7 py-4 text-[0.94rem] font-semibold text-white shadow-[0_24px_70px_-36px_rgba(198,40,63,0.65)] transition duration-300 hover:-translate-y-0.5 hover:border-[#f04d66] hover:bg-[linear-gradient(180deg,#d13149,#af2238)]">
+              Hablemos de tu proyecto
+              <svg class="ml-3" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M5 12h14M13 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="#planes" class="inline-flex items-center gap-3 px-1 py-3 text-[0.94rem] font-semibold text-brand-blue transition duration-300 hover:text-white">
+              <span class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-brand-blue/45 bg-brand-blue/[0.08]">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+              Ver opciones
+            </a>
+          </div>
+
+          <div class="mt-10 flex items-center gap-4 text-white/85">
+            <div class="flex -space-x-3">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,#f3d7ba,#b67c5e)] text-[11px] font-semibold text-[#1b1b1b]">PM</span>
+              <span class="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,#e9e2d1,#997d56)] text-[11px] font-semibold text-[#1b1b1b]">UX</span>
+              <span class="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-[linear-gradient(180deg,#d7e4ff,#4e74b8)] text-[11px] font-semibold text-[#10192d]">WEB</span>
+              <span class="flex h-11 w-11 items-center justify-center rounded-full border border-brand-yellow/25 bg-brand-yellow/[0.08] text-sm font-semibold text-brand-yellowSoft">50+</span>
+            </div>
+            <p class="text-[0.94rem] leading-7 text-white/82">Negocios que ya confían en nosotros</p>
+          </div>
+        </div>
+
+        <div class="relative xl:min-h-[760px]">
+          <div class="relative ml-auto overflow-hidden rounded-[34px] border border-white/10 bg-brand-surface shadow-[0_40px_120px_-60px_rgba(0,0,0,0.9)] xl:w-[100%]">
+            <img
+              src="/3.webp"
+              alt="Equipo reunido en una oficina colaborando frente a varias pantallas"
+              class="h-[320px] w-full object-cover sm:h-[420px] xl:h-[520px]"
+            />
+            <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,11,22,0.08),rgba(7,11,22,0.2)_48%,rgba(7,11,22,0.72)_100%)]"></div>
+          </div>
+
+
+
+          <div class="relative mt-6 grid gap-5 md:grid-cols-3 xl:absolute xl:inset-x-0 xl:bottom-0 xl:mt-0">
+            {
+              services.map((service) => (
+                <article class={`relative flex h-full flex-col overflow-hidden rounded-[28px] border bg-[linear-gradient(180deg,rgba(18,24,38,0.97),rgba(9,14,26,0.98))] p-6 shadow-[0_24px_90px_-60px_rgba(0,0,0,0.95)] backdrop-blur-sm ${service.accent.border}`}>
+                  <div class={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${service.accent.glow} to-transparent`}></div>
+
+                  <div class="flex items-start justify-between gap-4">
+                    <span class="inline-flex h-11 min-w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] px-3 text-[0.82rem] font-semibold text-white/82">
+                      {service.number}
+                    </span>
+             
+                  </div>
+
+                  <h3 class="mt-8 max-w-[11ch] text-[1.86rem] font-semibold leading-[1.05] tracking-[-0.05em] text-white">
+                    {service.title}
+                  </h3>
+
+                  <p class="mt-5 text-[0.94rem] leading-[1.95] text-white/65">
+                    {service.description}
+                  </p>
+
+                  <div class={`mt-auto inline-flex items-center gap-3 pt-8 text-[0.94rem] font-medium ${service.accent.link}`}>
+                    <span>{service.cta}</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M13 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
       </div>
     </div>
   </div>

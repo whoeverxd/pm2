@@ -23,7 +23,7 @@ const plans = [
       'Subdominio propio',
       'Perfil de Google Business opcional',
     ],
-    ctaText: 'Consultar Plan 1',
+    ctaText: 'Comprar',
     ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%201%20Landing%20sencilla',
   },
   {
@@ -50,7 +50,7 @@ const plans = [
       'QR con reseñas de Google',
       'Mejor estructura para vender o cotizar',
     ],
-    ctaText: 'Consultar Plan 2',
+    ctaText: 'Comprar',
     ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%202%20Landing%20con%20cat%C3%A1logo',
   },
   {
@@ -76,7 +76,7 @@ const plans = [
       'Dominio propio incluido',
       'SEO básico y analítica inicial',
     ],
-    ctaText: 'Consultar Plan 3',
+    ctaText: 'Comprar',
     ctaMessage: 'Hola%20ProgramMasters%2C%20me%20interesa%20el%20Plan%203%20Sitio%20corporativo',
   },
 ];
@@ -87,7 +87,7 @@ const plans = [
     <div class="max-w-3xl">
       <div class="eyebrow mb-5 inline-flex">Precios</div>
       <h2 class="section-title max-w-4xl">
-        Precios claros para comenzar sin complicarte.
+        <span class="text-transparent [-webkit-text-stroke:2px_theme(colors.brand.blue)]">Precios claros</span> para comenzar sin complicarte.
       </h2>
       <p class="mt-6 editorial-copy">
         Estos precios sirven como base para negocios y profesionales que quieren arrancar rápido. Si tu caso necesita más alcance, lo ajustamos contigo.
@@ -109,7 +109,7 @@ const plans = [
                 </div>
               )}
 
-              <div class="relative pt-4">
+              <div class="relative flex h-full flex-col pt-4">
                 <span class={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${plan.theme.badge}`}>
                   {plan.label}
                 </span>
@@ -138,17 +138,19 @@ const plans = [
                   ))}
                 </ul>
 
-                <a
-                  href={`https://wa.me/584244074025?text=${plan.ctaMessage}`}
-                  target="_blank"
-                  rel="noopener"
-                  class={`mt-10 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition ${plan.theme.button}`}
-                >
-                  {plan.ctaText}
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M13 5l7 7-7 7"/>
-                  </svg>
-                </a>
+                <div class="mt-auto pt-10">
+                  <a
+                    href={`https://wa.me/584244074025?text=${plan.ctaMessage}`}
+                    target="_blank"
+                    rel="noopener"
+                    class={`inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition ${plan.theme.button}`}
+                  >
+                    {plan.ctaText}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M5 12h14M13 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           ))

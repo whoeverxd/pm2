@@ -5,13 +5,17 @@ const plans = [
     price: '$5/mes',
     summary: 'Actualizaciones de seguridad y monitoreo 24/7.',
     accent: 'text-brand-blue',
+    border: 'border-brand-blue/35 hover:border-brand-blue/55',
+    surface: 'bg-[linear-gradient(180deg,rgba(18,31,57,0.92),rgba(12,20,36,0.96))]',
     features: ['Hosting incluido', 'SSL Gratis'],
   },
   {
     name: 'Estandar',
     price: '$15/mes',
     summary: 'Cambios menores de contenido y backups semanales.',
-    accent: 'text-[#ff9e9e]',
+    accent: 'text-[rgb(129,29,39)]',
+    border: 'border-[rgb(129,29,39)]/45 hover:border-[rgb(129,29,39)]/70',
+    surface: 'bg-[linear-gradient(180deg,rgba(49,16,23,0.94),rgba(23,11,16,0.97))]',
     features: ['Todo lo del Basico', 'Soporte por Email'],
   },
   {
@@ -19,6 +23,8 @@ const plans = [
     price: '$35/mes',
     summary: 'SEO continuo y optimizacion de velocidad mensual.',
     accent: 'text-brand-yellowSoft',
+    border: 'border-brand-yellow/35 hover:border-brand-yellow/55',
+    surface: 'bg-[linear-gradient(180deg,rgba(53,42,11,0.92),rgba(23,18,7,0.96))]',
     features: ['Todo lo del Estandar', 'Reporte de Trafico'],
   },
   {
@@ -26,6 +32,8 @@ const plans = [
     price: 'Personalizado',
     summary: 'Infraestructura dedicada y soporte de emergencia.',
     accent: 'text-brand-blue',
+    border: 'border-brand-blue/35 hover:border-brand-blue/55',
+    surface: 'bg-[linear-gradient(180deg,rgba(18,31,57,0.92),rgba(12,20,36,0.96))]',
     features: ['SLAs Garantizados', 'Account Manager'],
   },
 ];
@@ -33,10 +41,8 @@ const plans = [
 
 <section id="resultados" class="section relative pt-0">
   <div class="container-x">
-    <div class="panel relative overflow-hidden rounded-[28px] border border-white/10 bg-brand-surface/75 p-8 sm:p-10 lg:p-12">
-      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_24%)] pointer-events-none"></div>
-
-      <div class="relative">
+    <div class="px-0 py-2 sm:py-4">
+      <div>
         <h2 class="text-[2rem] font-semibold tracking-[-0.05em] text-white sm:text-[2.4rem]">
           Mantenimiento Mensual
         </h2>
@@ -47,7 +53,7 @@ const plans = [
         <div class="mt-10 grid gap-5 lg:grid-cols-4">
           {
             plans.map((plan) => (
-              <article class="min-h-[250px] border border-white/14 bg-[#0d1424]/78 p-6 transition duration-300 hover:border-white/22 hover:bg-[#101a30]/82">
+              <article class={`min-h-[250px] rounded-[14px] border p-6 transition duration-300 ${plan.border} ${plan.surface}`}>
                 <div class={`text-xl font-semibold ${plan.accent}`}>{plan.name}</div>
                 <div class="mt-4 text-[2rem] font-medium tracking-[-0.05em] text-white">{plan.price}</div>
                 <p class="mt-5 max-w-[22ch] text-base leading-8 text-white/80">{plan.summary}</p>
