@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'ProgramMasters — Premium websites for ambitious brands',
-  description = 'ProgramMasters designs high-conversion websites with premium visual direction, modern performance and bespoke creative systems for growing brands.',
+  title = 'ProgramMasters — Sitios web premium para marcas ambiciosas',
+  description = 'ProgramMasters diseña sitios web de alta conversión con una dirección visual premium, gran rendimiento y sistemas creativos a medida para marcas en crecimiento.',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
@@ -42,7 +42,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
       rel="stylesheet"
     />
 
-    <link rel="icon" type="ico" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body class="min-h-screen">
     <slot />

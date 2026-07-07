@@ -1,7 +1,8 @@
 ---
 const phone = '584244074025';
 const whatsappBaseMessage = 'Hola ProgramMasters, me interesa un sitio web para mi negocio';
-const recipientEmail = 'hola@programmasters.net';
+const supabaseFunctionUrl = import.meta.env.PUBLIC_SUPABASE_FUNCTION_URL || '';
+const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || import.meta.env.SUPABASE_KEY || '';
 ---
 
 <div class="fixed bottom-5 right-5 z-50 group">
@@ -99,19 +100,29 @@ const recipientEmail = 'hola@programmasters.net';
           <button type="submit" class="btn-primary w-full justify-center">
             Enviar mensaje
           </button>
+          <a
+            id="wa-fallback-link"
+            href={`https://wa.me/${phone}?text=${encodeURIComponent(whatsappBaseMessage)}`}
+            target="_blank"
+            rel="noopener"
+            class="btn-secondary hidden w-full justify-center"
+          >
+            Continuar por WhatsApp
+          </a>
         </div>
       </form>
     </div>
   </aside>
 </div>
 
-<script define:vars={{ phone, whatsappBaseMessage, recipientEmail }}>
+<script define:vars={{ phone, whatsappBaseMessage, supabaseFunctionUrl, supabaseAnonKey }}>
   const openButton = document.getElementById('wa-drawer-open');
   const drawer = document.getElementById('wa-drawer');
   const closeButton = document.getElementById('wa-drawer-close');
   const backdrop = document.getElementById('wa-drawer-backdrop');
   const form = document.getElementById('wa-lead-form');
   const status = document.getElementById('wa-form-status');
+  const fallbackLink = document.getElementById('wa-fallback-link');
   const body = document.body;
 
   const setDrawer = (open) => {
@@ -137,7 +148,7 @@ const recipientEmail = 'hola@programmasters.net';
     status.classList.add('border-brand-yellow/20', 'bg-brand-yellow/[0.08]', 'text-white');
   };
 
-  const openWhatsApp = (name, phoneNumber, message) => {
+  const getWhatsAppUrl = (name, phoneNumber, message) => {
     const parts = [
       whatsappBaseMessage,
       `Mi nombre es ${name}.`,
@@ -145,8 +156,20 @@ const recipientEmail = 'hola@programmasters.net';
       message,
     ].filter(Boolean);
 
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(parts.join(' '))}`;
+    return `https://wa.me/${phone}?text=${encodeURIComponent(parts.join(' '))}`;
+  };
+
+  const openWhatsApp = (name, phoneNumber, message) => {
+    const url = getWhatsAppUrl(name, phoneNumber, message);
     window.open(url, '_blank', 'noopener');
+  };
+
+  const setFallbackLink = (name, phoneNumber, message, visible) => {
+    if (!(fallbackLink instanceof HTMLAnchorElement)) return;
+
+    fallbackLink.href = getWhatsAppUrl(name, phoneNumber, message);
+    fallbackLink.classList.toggle('hidden', !visible);
+    fallbackLink.classList.toggle('inline-flex', visible);
   };
 
   openButton?.addEventListener('click', () => setDrawer(true));
@@ -173,6 +196,8 @@ const recipientEmail = 'hola@programmasters.net';
 
     if (honeypot) return;
 
+    setFallbackLink(name, phoneNumber, message, false);
+
     if (!name || !phoneNumber || !message) {
       showStatus('Necesitamos tu nombre, teléfono y mensaje.', 'error');
       return;
@@ -181,17 +206,30 @@ const recipientEmail = 'hola@programmasters.net';
     submitButton?.setAttribute('disabled', 'disabled');
     submitButton?.classList.add('opacity-70', 'cursor-not-allowed');
 
-    formData.append('_template', 'table');
-    formData.append('source', 'WhatsApp drawer');
-    formData.append('phone_number', phoneNumber);
+    if (!supabaseFunctionUrl || !supabaseAnonKey) {
+      showStatus('Falta configurar Supabase para capturar leads. Usa el enlace de WhatsApp mientras se completa la integración.', 'error');
+      setFallbackLink(name, phoneNumber, message, true);
+      submitButton?.removeAttribute('disabled');
+      submitButton?.classList.remove('opacity-70', 'cursor-not-allowed');
+      return;
+    }
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+      const response = await fetch(supabaseFunctionUrl, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
+          'Content-Type': 'application/json',
+          apikey: supabaseAnonKey,
+          Authorization: `Bearer ${supabaseAnonKey}`,
         },
-        body: formData,
+        body: JSON.stringify({
+          name,
+          phone: phoneNumber,
+          message,
+          source: 'whatsapp_drawer',
+          website: honeypot,
+        }),
       });
 
       if (!response.ok) {
@@ -203,8 +241,8 @@ const recipientEmail = 'hola@programmasters.net';
       openWhatsApp(name, phoneNumber, message);
       window.setTimeout(() => setDrawer(false), 900);
     } catch (error) {
-      showStatus('No pudimos guardar tus datos ahora mismo. Puedes continuar por WhatsApp y luego revisamos la captura.', 'error');
-      openWhatsApp(name, phoneNumber, message);
+      showStatus('No pudimos guardar tus datos ahora mismo. Puedes continuar por WhatsApp mientras revisamos la captura.', 'error');
+      setFallbackLink(name, phoneNumber, message, true);
     } finally {
       submitButton?.removeAttribute('disabled');
       submitButton?.classList.remove('opacity-70', 'cursor-not-allowed');
